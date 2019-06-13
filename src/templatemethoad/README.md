@@ -2,6 +2,9 @@
 서브클래스의 공통 사항을 상위 추상클래스에 구현하고, 상속을 통해 확장 개발을 도와주는 `행위 패턴(behavior pattern)` 중 하나이다.
 > `Strategy Pattern`도 행위 패턴의 일종
 
+## Class Diagram
+![template-method-pattern](https://user-images.githubusercontent.com/28993371/59412372-3f9a6680-8df8-11e9-9d21-d4fae0465e8a.png)
+
 ## Template Method Pattern in Java Core Library
 - 다음 클래스의 모든 **non-abstract methods** `java.io.InputStream`, `java.io.OutputStream`,  `java.io.Reader`, `java.io.Writer`, `java.util.AbstractList`, `java.util.AbstractSet`, `java.util.AbstractMap`
 - `javax.servlet.http.HttpServlet`의 `doXXX()`
