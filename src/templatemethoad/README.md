@@ -3,7 +3,7 @@
 > `Strategy Pattern`도 행위 패턴의 일종
 
 ## Class Diagram
-![template-method-pattern](https://user-images.githubusercontent.com/28993371/59412372-3f9a6680-8df8-11e9-9d21-d4fae0465e8a.png)
+![template-method-pattern](https://user-images.githubusercontent.com/28993371/59420133-467ca580-8e07-11e9-8a2b-ce78ff607cdf.png)
 
 ## Template Method Pattern in Java Core Library
 - 다음 클래스의 모든 **non-abstract methods** `java.io.InputStream`, `java.io.OutputStream`,  `java.io.Reader`, `java.io.Writer`, `java.util.AbstractList`, `java.util.AbstractSet`, `java.util.AbstractMap`
