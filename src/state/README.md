@@ -1,6 +1,6 @@
 ## State Pattern
 객체 자신이 클래스를 바꾸는 것처럼 내부의 상태에 따라 행동이 변경되도록 도와주는 디자인 패턴이다.
-> 상태 패턴도 `행위 패턴(behavior pattern)` 중 하나이다.
+> 상태 패턴도 `행위 패턴(behavioral pattern)` 중 하나이다.
 
 ## Class Diagram
 ![Package player](https://user-images.githubusercontent.com/28993371/59419997-09181800-8e07-11e9-960a-af3b8ce0ae68.png)
