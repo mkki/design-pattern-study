@@ -61,12 +61,12 @@
             if (o instanceof Subject) {
                 Subject subject = (Subject) o;
                 this.data = subject.getData();
-                behavior();
+                display();
             }
         }
         
         @Override
-        public void display(State state) {
+        public void display() {
             System.out.println("MY DATA: " + data);
         }
     }
@@ -179,10 +179,89 @@
     delete content!
 ~~~
 
-- **Pull** 방식의 코드, `Observer` 객체가 `Subject` 객체로 상태를 전달
-~~~
+- **Pull** 방식의 코드, `Observer` 객체가 `Subject` 객체에 상태를 요청
+    - `void notifyObservers(Observer observer)` 메서드 추가
+    ~~~
+        public interface Subject {
+            void addObserver(Observer observer);
+            void removeObserver(Observer observer);
+            void notifyObservers();
+            void notifyObservers(Observer observer);
+        }
+    ~~~
     
-~~~
+   - `UpdateChecker Observer` 추가
+   ~~~
+        public class UpdateChecker implements Observer {
+            public UpdateChecker() {
+            }
+        
+            public void subscribe(Subject subject) {
+                subject.addObserver(this);
+            }
+        
+            public void unsubscribe(Subject subject) {
+                subject.removeObserver(this);
+            }
+        
+            public void check(Subject subject) {
+                subject.notifyObservers(this);
+            }
+        
+            @Override
+            public void update(Publisher.ContentState contentState) {
+                switch (contentState) {
+                    case UPDATE:
+                        System.out.println("[CHECK] update content!");
+                        break;
+                    case DELETE:
+                        System.out.println("[CHECK] delete content!");
+                        break;
+                    case NONE:
+                        System.out.println("[CHECK] content is not updated");
+                        break;
+                }
+            }
+        }
+   ~~~
+   
+   - `Client` 클래스에 `UpdateChecker` 추가
+   ~~~
+        public class Client {
+            public static void main(String[] args) {
+                Publisher publisher = new Publisher();
+                Subscriber firstSubscriber = new Subscriber();
+                Subscriber secondSubscriber = new Subscriber();
+                Subscriber thirdSubscriber = new Subscriber();
+                UpdateChecker updateChecker = new UpdateChecker();
+        
+                firstSubscriber.subscribe(publisher);
+                secondSubscriber.subscribe(publisher);
+                thirdSubscriber.subscribe(publisher);
+                updateChecker.subscribe(publisher);
+                publisher.setContentState(Publisher.ContentState.UPDATE);
+                System.out.println("=================");
+        
+                thirdSubscriber.unsubscribe(publisher);
+                publisher.setContentState(Publisher.ContentState.DELETE);
+                System.out.println("=================");
+        
+                updateChecker.check(publisher);
+            }
+        }
+        
+        // output
+        update content!
+        update content!
+        update content!
+        [CHECK] update content!
+        =================
+        delete content!
+        delete content!
+        [CHECK] delete content!
+        =================
+        [CHECK] delete content!
+   ~~~
 
 
 ## References

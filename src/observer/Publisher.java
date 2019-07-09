@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Publisher implements Subject {
     public enum ContentState {
-        UPDATE, DELETE
+        NONE, UPDATE, DELETE
     }
 
     private List<Observer> subscribers;
@@ -32,6 +32,11 @@ public class Publisher implements Subject {
         for (Observer subscriber : subscribers) {
             subscriber.update(contentState);
         }
+    }
+
+    @Override
+    public void notifyObservers(Observer observer) {
+        observer.update(contentState);
     }
 
     public ContentState getContentState() {
