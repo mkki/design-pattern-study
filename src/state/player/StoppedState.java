@@ -9,7 +9,7 @@ public class StoppedState implements State {
     }
 
     private void showContent() {
-        System.out.println("Other Content");
+        System.out.println("Other ContentState");
         System.out.println("1. Harry Potter");
         System.out.println("2. Lord of the Ring");
     }
