@@ -3,7 +3,7 @@
     - `Adaptee`는 외부 시스템이나 라이브러리를 의미한다.
     - `Adapter`는 `Client`와 `Adaptee`를 연결해주는 역할을 한다.
 - 클래스의 인터페이스를 다른 인터페이스로 변환하는 패턴으로, 함께 동작할 수 없는 클래스들이 **함께 작동하도록** 해준다.
-    > **Wrapper** 역할을 한다고 볼 수 있다.
+    > **구조 패턴(Structural Pattern)** 중 하나이다.
 - 구현 방법은 `class adapter implementation`과 `object adapter implementation`로 나뉜다.
     > 둘의 차이점은 상속을 통해 구현하는지, 내부에 인스턴스로 갖는지이다.
 
